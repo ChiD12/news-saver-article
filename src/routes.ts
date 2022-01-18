@@ -1,5 +1,5 @@
 import * as express from 'express';
-import { celebrate, Joi, errors, Segments } from 'celebrate';
+import { celebrate, Segments } from 'celebrate';
 import { MongoClient } from 'mongodb';
 
 import { articleSchema } from './schema/schema';

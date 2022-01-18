@@ -9,6 +9,7 @@ export interface ArticleInput {
   userId: string;
   docLink: string;
   plainText: string;
+  sentFromDeviceId: string;
 }
 
 export interface ArticleRepo {

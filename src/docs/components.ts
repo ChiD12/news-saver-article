@@ -1,5 +1,12 @@
 export const components = {
   components: {
+    securitySchemes: {
+      ApiKeyAuth: {
+        type: 'apiKey',
+        in: 'header',
+        name: 'Authorization'
+      }
+    },
     schemas: {
       // id model
       userId: {
@@ -21,14 +28,8 @@ export const components = {
       article: {
         type: 'object',
         properties: {
-          userId: {
-            $ref: '#/components/schemas/userId'
-          },
           docLink: {
             $ref: '#/components/schemas/docLink'
-          },
-          plainText: {
-            $ref: '#/components/schemas/plainText'
           }
         }
       },
@@ -64,5 +65,10 @@ export const components = {
         }
       }
     }
-  }
+  },
+  security: [
+    {
+      ApiKeyAuth: []
+    }
+  ]
 };
