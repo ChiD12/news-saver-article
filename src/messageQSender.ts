@@ -3,7 +3,7 @@ import { ArticleInput } from './interfaces/interfaces';
 const amqp = require('amqplib/callback_api');
 
 export const sendPush = (article: ArticleInput) => {
-  amqp.connect('amqp://localhost', (error: any, connection: any) => {
+  amqp.connect(process.env.CLOUDAMQP_URL, (error: any, connection: any) => {
     if (error) {
       throw error;
     }
