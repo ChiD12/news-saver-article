@@ -11,5 +11,9 @@ export const createArticleService = (repo: ArticleRepo) => {
     return repo.fetchAllArticles();
   };
 
-  return { postArticle, getAllArticles };
+  const getArticlessFromUser = (userId: string) => {
+    return repo.fetchArticlesFromUser(userId);
+  };
+
+  return { postArticle, getAllArticles, getArticlessFromUser };
 };

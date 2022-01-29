@@ -5,5 +5,8 @@ export const articleSchema = Joi.object({
   sentFromDeviceId: Joi.string().required(),
   docLink: Joi.string()
     .uri()
+    .required(),
+  deviceType: Joi.string()
+    .valid('android', 'browser')
     .required()
 });

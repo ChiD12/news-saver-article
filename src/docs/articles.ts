@@ -49,5 +49,30 @@ export const articles = {
         }
       }
     }
+  },
+  '/article/debug': {
+    get: {
+      tags: ['Articles'], // operation's tag.
+      description: 'Get all Articles', // operation's desc.
+      operationId: 'get_articles_debug', // unique operation id.
+      parameters: [], // expected params.
+      // expected responses
+      responses: {
+        // response code
+        200: {
+          description: 'Articles were obtained', // response desc.
+          content: {
+            'application/json': {
+              schema: {
+                type: 'array',
+                items: {
+                  $ref: '#/components/schemas/article'
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
 };

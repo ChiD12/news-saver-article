@@ -27,6 +27,7 @@ app.use((req: any, res: any, next: any) => {
     console.log(decoded);
     req.body.userId = decoded.userId;
     req.body.sentFromDeviceId = decoded.externalDeviceId;
+    req.body.deviceType = decoded.deviceType;
   } catch (err) {
     return res.status(401).send('Invalid Token');
   }

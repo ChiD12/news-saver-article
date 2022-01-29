@@ -22,8 +22,14 @@ router.post('/article', celebrate({ [Segments.BODY]: articleSchema }), async (re
   next();
 });
 
+router.get('/article/debug', async (req, res, next) => {
+  const allArticles = await service.getAllArticles();
+  res.status(200).json(allArticles);
+  next();
+});
+
 router.get('/article', async (req, res, next) => {
-  const allUsers = await service.getAllArticles();
-  res.status(200).json(allUsers);
+  const userAticles = await service.getArticlessFromUser(req.body.userId);
+  res.status(200).json(userAticles);
   next();
 });
