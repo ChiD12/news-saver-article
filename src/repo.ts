@@ -16,7 +16,10 @@ export const createArticleRepo = (client: MongoClient): ArticleRepo => {
         userId: article.userId,
         link: article.docLink,
         deviceType: article.deviceType,
-        datePosted: new Date()
+        datePosted: new Date(),
+        thumbnail: article.thumbnail,
+        title: article.title,
+        description: article.description
       }
     };
     const result = await articles.updateOne(filter, updateFilter, options);
@@ -40,7 +43,10 @@ export const createArticleRepo = (client: MongoClient): ArticleRepo => {
         userId: doc.userId,
         docLink: doc.link,
         deviceType: doc.deviceType,
-        datePosted: doc.datePosted.toUTCString()
+        datePosted: doc.datePosted.toUTCString(),
+        thumbnail: doc.thumbnail,
+        title: doc.title,
+        desciption: doc.description
       };
     });
 
@@ -61,18 +67,21 @@ export const createArticleRepo = (client: MongoClient): ArticleRepo => {
       .sort(sort)
       .toArray();
 
-    const fetchedPushs: Article[] = fetchedDocuments.map((doc: WithId<Document>) => {
+    const fetchedArticles: Article[] = fetchedDocuments.map((doc: WithId<Document>) => {
       return {
         id: doc.id,
         userId: doc.userId,
         docLink: doc.link,
         deviceType: doc.deviceType,
-        datePosted: doc.datePosted.toUTCString()
+        datePosted: doc.datePosted.toUTCString(),
+        thumbnail: doc.thumbnail,
+        title: doc.title,
+        desciption: doc.description
       };
     });
 
-    console.log(fetchedPushs);
-    return fetchedPushs;
+    console.log(fetchedArticles);
+    return fetchedArticles;
   };
 
   return { insertArticle, fetchAllArticles, fetchArticlesFromUser };

@@ -10,6 +10,9 @@ export interface ArticleInput {
   docLink: string;
   sentFromDeviceId: string;
   deviceType: string;
+  title: string | null;
+  thumbnail: string | null;
+  description: string | null;
 }
 
 export interface ArticleRepo {
